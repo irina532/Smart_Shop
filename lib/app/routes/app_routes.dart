@@ -15,6 +15,10 @@ abstract class Routes {
   static const ELECTRONICS = _Paths.ELECTRONICS;
   static const WOMENS_CLOTH = _Paths.WOMENS_CLOTH;
   static const MEN_CLOTH = _Paths.MEN_CLOTH;
+  static const CATEGORY_PRODUCTS = _Paths.CATEGORY_PRODUCTS;
+
+
+
 }
 
 abstract class _Paths {

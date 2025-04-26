@@ -3,17 +3,23 @@ import 'package:http/http.dart' as http;
 import 'package:smart_shop/app/data/models/product_model.dart';
 import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:logger/logger.dart';
 
 class HomeController extends GetxController {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  // Example in your HomeController
-final categoryNames = [
-  'jewelery',
-  'electronics',
-  'men\'s clothing',
-  'women\'s clothing',
-].obs;
+  var isLoading = false.obs;
+  var categoryProducts = <ProductModel>[].obs;
+  final String catProductBaseUrl = "https://fakestoreapi.com/products/category/";
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  final dummyCategoryList = [
+    {"id": "electronics", "name": "Electronics", "imageUrl": "asset/images/electronics.png"},
+    {"id": "jewelery", "name": "Jewelery", "imageUrl": "asset/images/jwellery.png"},
+    {"id": "men's clothing", "name": "Men's clothing", "imageUrl": "asset/images/men.png"},
+    {"id": "women's clothing", "name": "Women's clothing", "imageUrl": "asset/images/women.png"},
+  ];
+
+  Map<String, dynamic> selectedCategoryProudct = {};
 
   final RxList<String> localImages = <String>[
     'asset/images/jwellery.png',
@@ -21,15 +27,26 @@ final categoryNames = [
     'asset/images/men.png',
     'asset/images/women.png',
   ].obs;
+
   final count = 0.obs;
   String test = 'hii';
 
-  // List of products from API
   var products = <ProductModel>[].obs;
 
   @override
   void onInit() {
     super.onInit();
+  
+
+  // Initialize the categories here
+  dummyCategoryList.assignAll([
+    {"id": "electronics", "name": "Electronics", "imageUrl": "asset/images/electronics.png"},
+    {"id": "jewelery", "name": "Jewelery", "imageUrl": "asset/images/jwellery.png"},
+    {"id": "men's clothing", "name": "Men's clothing", "imageUrl": "asset/images/men.png"},
+    {"id": "women's clothing", "name": "Women's clothing", "imageUrl": "asset/images/women.png"},
+  ]);
+
+
     fetchProducts();
   }
 
@@ -54,11 +71,23 @@ final categoryNames = [
     try {
       await _auth.signOut();
       Get.snackbar("Success", "Sign Out successfully");
-      // Navigate or do other stuff here
     } catch (e) {
       Get.snackbar("Error", e.toString());
     }
   }
 
-  getProductsByCategory(String category) {}
+  Future<void> mFetchCategoryProducts(Map<String, String> product) async {
+    selectedCategoryProudct = product;
+    print('Selected category: ${product["name"]}');
+    var response = await http.get(
+      Uri.parse(catProductBaseUrl + product["id"].toString()),
+    );
+
+    if (response.statusCode == 200) {
+      List<dynamic> data = json.decode(response.body);
+      categoryProducts.value = data.map((e) => ProductModel.fromJson(e)).toList();
+    } else {
+      Logger().e('Failed to load category products: ${response.statusCode}');
+    }
+  }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:smart_shop/app/modules/all_categories/views/all_categories_view.dart';
+
 import 'package:smart_shop/app/modules/all_products/views/all_products_view.dart';
 import 'package:smart_shop/app/modules/cart/views/cart_view.dart';
 import 'package:smart_shop/app/modules/home/views/Widgets/custom_drawer_implementation.dart';
