@@ -10,8 +10,12 @@ import '../modules/cart/bindings/cart_binding.dart';
 import '../modules/cart/views/cart_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/log_in/bindings/log_in_binding.dart';
+import '../modules/log_in/views/log_in_view.dart';
 import '../modules/product_details/bindings/product_details_binding.dart';
 import '../modules/product_details/views/product_details_view.dart';
+import '../modules/products_by_category/bindings/products_by_category_binding.dart';
+import '../modules/products_by_category/views/products_by_category_view.dart';
 
 part 'app_routes.dart';
 
@@ -19,7 +23,7 @@ class AppPages {
   AppPages._();
 
   static const INITIAL =
-      Routes.HOME; // this page will be displayed first whenever opened
+      Routes.LOG_IN; // this page will be displayed first whenever opened
 
   static final routes = [
     GetPage(
@@ -52,5 +56,14 @@ class AppPages {
       page: () => const AllCartsView(),
       binding: AllCartsBinding(),
     ),
+    GetPage(
+      name: _Paths.LOG_IN,
+      page: () => const LogInView(),
+      binding: LogInBinding(),
+    ),
+   GetPage(
+  name: '/products-by-category/:category',
+  page: () => ProductsByCategoryView(),
+),
   ];
 }

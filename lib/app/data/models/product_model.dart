@@ -21,7 +21,8 @@ class ProductModel {
         return ProductModel(
             id: json["id"] ?? 0,
             title: json["title"] ?? "",
-            price: json["price"] ?? 0.0,
+            price: json['price'] != null ? (json['price'] as num).toDouble() : 0.0,
+
             description: json["description"] ?? "",
             category: json["category"] ?? "",
             image: json["image"] ?? "",
@@ -45,6 +46,7 @@ class ProductModel {
     }
 
 }
+
 
 class Rating {
     Rating({

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "173348045000",
+    "project_id": "smart-shop-71b12",
+    "storage_bucket": "smart-shop-71b12.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173348045000:android:8e855c7595365a232fa5fd",
+        "android_client_info": {
+          "package_name": "com.irina_smart_shop.smart_shop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbb0kjGvG5NRffPLmunspUb9uK0ZKE6q0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

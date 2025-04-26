@@ -4,10 +4,12 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:smart_shop/app/modules/all_carts/views/all_carts_view.dart';
 import 'package:smart_shop/app/modules/all_carts/views/all_carts_view.dart';
 import 'package:smart_shop/app/modules/cart/views/cart_view.dart';
+import 'package:smart_shop/app/modules/home/controllers/home_controller.dart';
 import 'package:smart_shop/app/routes/app_pages.dart';
 
 class CustomDrawer extends StatelessWidget{
-  const CustomDrawer({super.key});
+  final controller = Get.find<HomeController>();
+   CustomDrawer({super.key});
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -17,9 +19,9 @@ class CustomDrawer extends StatelessWidget{
             accountName: Text("University of Chittagong"), accountEmail: Text('university@chittagong'),
             currentAccountPicture: CircleAvatar(
               radius: 40,
-              child: ClipOval(
-                child: Image.network(
-  "https://your-image-url.com/shop.png",
+              child: CircleAvatar(
+                child: Image(
+  image: NetworkImage("https://banner2.cleanpng.com/cb2/slq/ooq/atux8lmd1.webp"),
   fit: BoxFit.contain,
   width: 50,
   height: 50,
@@ -28,7 +30,9 @@ class CustomDrawer extends StatelessWidget{
     if (loadingProgress == null) return child;
     return Center(child: CircularProgressIndicator());
   },
-),
+)
+
+
 
 )),
             decoration: BoxDecoration(color: Colors.amber),
@@ -77,8 +81,10 @@ class CustomDrawer extends StatelessWidget{
       ListTile(
         leading: Icon(Icons.logout, color: Colors.red),
         title: Text('logout'),
-        onTap: () {
-          Navigator.pop(context);
+        onTap: () async {
+          Navigator.pop(context); // close drawer
+                  await controller.mLogout(); // ✅ LOGOUT FROM CONTROLLER
+              Get.offAllNamed(Routes.LOG_IN);
         },
       ),
 
