@@ -8,14 +8,22 @@ import '../modules/all_products/bindings/all_products_binding.dart';
 import '../modules/all_products/views/all_products_view.dart';
 import '../modules/cart/bindings/cart_binding.dart';
 import '../modules/cart/views/cart_view.dart';
+import '../modules/electronics/bindings/electronics_binding.dart';
+import '../modules/electronics/views/electronics_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/jwelery/bindings/jwelery_binding.dart';
+import '../modules/jwelery/views/jwelery_view.dart';
 import '../modules/log_in/bindings/log_in_binding.dart';
 import '../modules/log_in/views/log_in_view.dart';
+import '../modules/men-cloth/bindings/men_cloth_binding.dart';
+import '../modules/men-cloth/views/men_cloth_view.dart';
 import '../modules/product_details/bindings/product_details_binding.dart';
 import '../modules/product_details/views/product_details_view.dart';
 import '../modules/products_by_category/bindings/products_by_category_binding.dart';
 import '../modules/products_by_category/views/products_by_category_view.dart';
+import '../modules/womens-cloth/bindings/womens_cloth_binding.dart';
+import '../modules/womens-cloth/views/womens_cloth_view.dart';
 
 part 'app_routes.dart';
 
@@ -61,9 +69,31 @@ class AppPages {
       page: () => const LogInView(),
       binding: LogInBinding(),
     ),
-   GetPage(
-  name: '/products-by-category/:category',
-  page: () => ProductsByCategoryView(),
-),
+    GetPage(
+      name: '/products-by-category/:category',
+      page: () => ProductsByCategoryView(),
+    ),
+    GetPage(
+      name: _Paths.JWELERY,
+      page: () => const JweleryView(),
+      binding: JweleryBinding(),
+    ),
+    GetPage(
+      name: _Paths.ELECTRONICS,
+      page: () => const ElectronicsView(),
+      binding: ElectronicsBinding(),
+    ),
+    GetPage(
+      name: _Paths.WOMENS_CLOTH,
+      page: () => const WomensClothView(),
+      binding: WomensClothBinding(),
+    ),
+    GetPage(
+      name: _Paths.MEN_CLOTH,
+      page: () => const MenClothView(),
+      binding: MenClothBinding(),
+    ),
+     
+    
   ];
 }

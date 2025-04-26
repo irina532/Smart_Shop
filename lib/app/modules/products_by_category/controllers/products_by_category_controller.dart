@@ -1,9 +1,14 @@
 import 'package:get/get.dart';
+import 'package:smart_shop/app/data/models/jwellery_model.dart';
 import 'package:smart_shop/app/data/models/product_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ProductsByCategoryController extends GetxController {
+  List<ProductModel> getProductsByCategory(String category) {
+  return products.where((product) => product.category.toLowerCase() == category.toLowerCase()).toList();
+}
+
   final String category;
   var isLoading = true.obs;
   var products = <ProductModel>[].obs;

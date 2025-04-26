@@ -59,4 +59,6 @@ final categoryNames = [
       Get.snackbar("Error", e.toString());
     }
   }
+
+  getProductsByCategory(String category) {}
 }

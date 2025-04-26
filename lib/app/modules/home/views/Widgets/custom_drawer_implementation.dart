@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -12,11 +13,13 @@ class CustomDrawer extends StatelessWidget{
    CustomDrawer({super.key});
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     return Drawer(
       child: Column(
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text("University of Chittagong"), accountEmail: Text('university@chittagong'),
+            accountName: Text(""), 
+            accountEmail: Text(user?.email ?? '',style: const TextStyle(fontSize: 14),),
             currentAccountPicture: CircleAvatar(
               radius: 40,
               child: CircleAvatar(
@@ -44,7 +47,7 @@ class CustomDrawer extends StatelessWidget{
             ListTile(
         leading: Icon(Icons.person, color: Colors.blue),
         title: Text('Shop Items'),
-        subtitle: Text('Flutter Developer'),
+        //subtitle: Text('Flutter Developer'),
         trailing: Icon(Icons.arrow_forward_ios, color: Colors.grey),
         tileColor: Colors.blue.shade50,
         onTap: () {
@@ -55,9 +58,9 @@ class CustomDrawer extends StatelessWidget{
 
       ListTile(
         leading: Icon(Icons.person, color: Colors.blue),
-        title: Text('Erina Akter'),
-        subtitle: Text('Flutter Developer'),
-        trailing: Icon(Icons.arrow_forward_ios, color: Colors.grey),
+        title: Text('Pay'),
+        //subtitle: Text('Flutter Developer'),
+        trailing: Icon(Icons.money, color: Colors.grey),
         tileColor: Colors.blue.shade50,
         onTap: () {
           print('ListTile tapped!');
@@ -66,9 +69,9 @@ class CustomDrawer extends StatelessWidget{
 
       ListTile(
         leading: Icon(Icons.person, color: Colors.blue),
-        title: Text('Erina Akter'),
-        subtitle: Text('Flutter Developer'),
-        trailing: Icon(Icons.arrow_forward_ios, color: Colors.grey),
+        title: Text('Cart'),
+        //subtitle: Text('Flutter Developer'),
+        trailing: Icon(Icons.shopping_cart, color: Colors.grey),
         tileColor: Colors.blue.shade50,
         onTap: () {
           print('ListTile tapped!');

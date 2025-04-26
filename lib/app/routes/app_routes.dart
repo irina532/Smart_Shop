@@ -11,6 +11,10 @@ abstract class Routes {
   static const ALL_CARTS = _Paths.ALL_CARTS;
   static const LOG_IN = _Paths.LOG_IN;
   static const PRODUCTS_BY_CATEGORY = _Paths.PRODUCTS_BY_CATEGORY;
+  static const JWELERY = _Paths.JWELERY;
+  static const ELECTRONICS = _Paths.ELECTRONICS;
+  static const WOMENS_CLOTH = _Paths.WOMENS_CLOTH;
+  static const MEN_CLOTH = _Paths.MEN_CLOTH;
 }
 
 abstract class _Paths {
@@ -23,4 +27,10 @@ abstract class _Paths {
   static const ALL_CARTS = '/all-carts';
   static const LOG_IN = '/log-in';
   static const PRODUCTS_BY_CATEGORY = '/products-by-category';
+  static const JWELERY = '/jwelery';
+  static const ELECTRONICS = '/electronics';
+  static const WOMENS_CLOTH = '/womens-cloth';
+  static const MEN_CLOTH = '/men-cloth';
+  static const CATEGORY_PRODUCTS = '/category-products';
 }
+
